@@ -58,7 +58,7 @@ $button-bg: darken($navbar-bg, 2%)
                 font-family: 'Open Sans'
                 border: none
                 background: none
-                color: white
+                color: inherit
                 display: inline-block
                 @include remove-number-slider
                 &:active
@@ -75,10 +75,12 @@ $button-bg: darken($navbar-bg, 2%)
             user-select: none
             position: relative
             box-sizing: border-box
+            color: #46494e
             &:hover
                 z-index: 1
                 transform: scale(1.2)
         .active_cell_selector
+            color: white
             &::after
                 position: absolute
                 display: inline-block

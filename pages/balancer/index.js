@@ -164,7 +164,7 @@ export default function Balancer(props) {
                                 className={
                                     style.cell_selector +
                                     ' ' +
-                                    (lookupRole(player.name, 'tank')
+                                    (player.active && lookupRole(player.name, 'tank')
                                         ? style.active_cell_selector
                                         : '')
                                 }
@@ -192,7 +192,7 @@ export default function Balancer(props) {
                                 className={
                                     style.cell_selector +
                                     ' ' +
-                                    (lookupRole(player.name, 'dps')
+                                    (player.active && lookupRole(player.name, 'dps')
                                         ? style.active_cell_selector
                                         : '')
                                 }
@@ -220,7 +220,7 @@ export default function Balancer(props) {
                                 className={
                                     style.cell_selector +
                                     ' ' +
-                                    (lookupRole(player.name, 'supp')
+                                    (player.active && lookupRole(player.name, 'supp')
                                         ? style.active_cell_selector
                                         : '')
                                 }
