@@ -2,6 +2,16 @@ import React, { useEffect, useState } from 'react'
 import style from '../../styles/main.module.sass'
 import axios from 'axios'
 
+function findPlayerIndex(players, playerName)
+{
+    const index = players.findIndex((element, i) => {
+        if (element.name === playerName) {
+            return true
+        }
+    })
+    return index
+}
+
 export default function Balancer(props) {
     // const initPlayers = [
     //     {
@@ -42,6 +52,17 @@ export default function Balancer(props) {
         })
     }, [])
 
+    const onChangeRoleSR = (playerName, role, newValue) => {
+        const updatedPlayers = players.slice()
+        const i = findPlayerIndex(updatedPlayers, playerName)
+        if(i >= 0)
+        {
+            updatedPlayers[i][role][0] = Math.max(0, Math.min(newValue, 5000))
+            console.log(updatedPlayers[i][role][0])
+            setPlayers(updatedPlayers)
+        }
+    }
+
     const onClickSelectAll = (e) => {
         const updatedPlayers = players.slice()
         for (var i in updatedPlayers) {
@@ -59,11 +80,7 @@ export default function Balancer(props) {
     }
 
     const onClickPlayer = (playerName, e) => {
-        const index = players.findIndex((element, i) => {
-            if (element.name === playerName) {
-                return true
-            }
-        })
+        const index = findPlayerIndex(players, playerName)
         if (index >= 0) {
             const updatedPlayers = players.slice()
             updatedPlayers[index].active = !updatedPlayers[index].active
@@ -72,11 +89,7 @@ export default function Balancer(props) {
     }
 
     const onClickRole = (playerName, role, e) => {
-        const index = players.findIndex((element, i) => {
-            if (element.name === playerName) {
-                return true
-            }
-        })
+        const index = findPlayerIndex(players, playerName)
         if (index >= 0) {
             const updatedPlayers = players.slice()
             updatedPlayers[index][role][1] = !updatedPlayers[index][role][1]
@@ -85,22 +98,14 @@ export default function Balancer(props) {
     }
 
     const lookupPlayerActive = (playerName) => {
-        const index = players.findIndex((element, i) => {
-            if (element.name === playerName) {
-                return true
-            }
-        })
+        const index = findPlayerIndex(players, playerName)
         if (index >= 0) {
             return players[index].active
         }
     }
 
     const lookupRole = (playerName, role) => {
-        const index = players.findIndex((element, i) => {
-            if (element.name === playerName) {
-                return true
-            }
-        })
+        const index = findPlayerIndex(players, playerName)
         if (index >= 0) {
             return players[index][role][1]
         }
@@ -152,9 +157,10 @@ export default function Balancer(props) {
                                 {player.name}
                             </td>
                             <td
-                                onClick={(e) =>
-                                    onClickRole(player.name, 'tank', e)
-                                }
+                                onClick={(e) => {
+                                    if(e.target.tagName !== 'INPUT' && player.tank[0] > 0)
+                                        onClickRole(player.name, 'tank', e)
+                                }}
                                 className={
                                     style.cell_selector +
                                     ' ' +
@@ -163,12 +169,26 @@ export default function Balancer(props) {
                                         : '')
                                 }
                                 id="tank">
-                                {player.tank[0] > 0 ? player.tank[0] : '---'}
+                                {player.tank[0] > 0 ? (
+                                
+                                    <input
+                                        onChange={(e) => {
+                                            onChangeRoleSR(player.name, 'tank', e.target.value)
+                                        }}
+                                        type='number'
+                                        value={
+                                            player.tank[0]
+                                        }>
+                                    </input>
+                                ) : (
+                                    '---'
+                                )}                                    
                             </td>
                             <td
-                                onClick={(e) =>
-                                    onClickRole(player.name, 'dps', e)
-                                }
+                                onClick={(e) => {
+                                    if(e.target.tagName !== 'INPUT' && player.dps[0] > 0)
+                                        onClickRole(player.name, 'dps', e)
+                                }}
                                 className={
                                     style.cell_selector +
                                     ' ' +
@@ -177,12 +197,26 @@ export default function Balancer(props) {
                                         : '')
                                 }
                                 id="dps">
-                                {player.dps[0] > 0 ? player.dps[0] : '---'}
+                                {player.dps[0] > 0 ? (
+                                
+                                    <input
+                                        onChange={(e) => {
+                                            onChangeRoleSR(player.name, 'dps', e.target.value)
+                                        }}
+                                        type='number'
+                                        value={
+                                            player.dps[0]
+                                        }>
+                                    </input>
+                                ) : (
+                                    '---'
+                                )}       
                             </td>
                             <td
-                                onClick={(e) =>
-                                    onClickRole(player.name, 'supp', e)
-                                }
+                                onClick={(e) => {
+                                    if(e.target.tagName !== 'INPUT' && player.supp[0] > 0)
+                                        onClickRole(player.name, 'supp', e)
+                                }}
                                 className={
                                     style.cell_selector +
                                     ' ' +
@@ -191,7 +225,20 @@ export default function Balancer(props) {
                                         : '')
                                 }
                                 id="supp">
-                                {player.supp[0] > 0 ? player.supp[0] : '---'}
+                                {player.supp[0] > 0 ? (
+                                
+                                    <input
+                                        onChange={(e) => {
+                                            onChangeRoleSR(player.name, 'supp', e.target.value)
+                                        }}
+                                        type='number'
+                                        value={
+                                            player.supp[0]
+                                        }>
+                                    </input>
+                                ) : (
+                                    '---'
+                                )}       
                             </td>
                         </tr>
                     ))}

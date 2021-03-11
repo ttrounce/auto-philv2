@@ -49,6 +49,21 @@ $button-bg: darken($navbar-bg, 2%)
             max-width: 0
             text-align: center
             padding: 0.5rem
+            input[type=number] 
+                max-width: 2.5rem
+                text-align: center
+                font-size: 1rem
+                font-family: 'Open Sans'
+                border: none
+                background: none
+                color: white
+                appearance: textfield
+                display: inline-block
+                &:active
+                    width: auto
+                &:focus
+                    border-bottom: 1px solid white
+                    outline: none
         input[type=checkbox]
             margin-left: 1rem
         border-collapse: collapse
@@ -82,7 +97,14 @@ $button-bg: darken($navbar-bg, 2%)
         background: lighten($navbar-button-bg, 5%)
         transition: all 0.2s ease
 
-
+.light_button
+    @extend .button
+    background: lighten($button-bg, 5%)
+    &:hover
+        background: lighten($navbar-button-bg, 5%)
+    &:active
+        background: lighten($navbar-button-bg, 10%)
+    
 .container
     margin: 0 auto
     width: 75%

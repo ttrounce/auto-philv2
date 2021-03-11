@@ -17,6 +17,9 @@ function MyApp({ Component, pageProps }) {
                         <a className={style.nav_item} href="/balancer">
                             Balancer
                         </a>
+                        <a className={style.nav_item} href="/teams">
+                            Teams
+                        </a>
                     </div>
                 </div>
                 <div className={style.content}>
