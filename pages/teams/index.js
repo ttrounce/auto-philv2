@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react'
+<<<<<<< HEAD
 import style from '../../styles/modules/main.module.sass'
+=======
+import style from '../../styles/main.module.sass'
+>>>>>>> d5119bab0b324fc90bf02a9efabee459eee6a696
 
 export default function Log(props) {
     return (
