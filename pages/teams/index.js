@@ -8,9 +8,23 @@ export default function Log(props) {
             <table className={style.column}>
                 <thead>
                     <tr>
-                        <th>Strike Team 404 <button className={style.light_button} style={{marginLeft: '5px'}}>Select Winner</button></th>
-                        <th style={{fontWeight: 'normal'}}>vs</th>
-                        <th>Raccoon Ravagers <button className={style.light_button} style={{marginLeft: '5px'}}>Select Winner</button></th>
+                        <th>
+                            Strike Team 404{' '}
+                            <button
+                                className={style.light_button}
+                                style={{ marginLeft: '5px' }}>
+                                Select Winner
+                            </button>
+                        </th>
+                        <th style={{ fontWeight: 'normal' }}>vs</th>
+                        <th>
+                            Raccoon Ravagers{' '}
+                            <button
+                                className={style.light_button}
+                                style={{ marginLeft: '5px' }}>
+                                Select Winner
+                            </button>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>

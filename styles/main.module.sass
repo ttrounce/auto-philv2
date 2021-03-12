@@ -48,10 +48,9 @@ $button-bg: darken($navbar-bg, 2%)
         tr:nth-child(even)
             background: darken($navbar-bg, 2%)
         td, th
-            max-width: 0
-            text-align: center
+            user-select: none
             padding: 0.5rem
-            input[type=number] 
+            input[type=number], input[type=text]
                 max-width: 2.5rem
                 text-align: center
                 font-size: 1rem
@@ -71,22 +70,58 @@ $button-bg: darken($navbar-bg, 2%)
         border-collapse: collapse
         width: 100%
         .cell_selector
-            cursor: pointer
-            user-select: none
             position: relative
             box-sizing: border-box
             color: #46494e
-            &:hover
-                z-index: 1
-                transform: scale(1.2)
         .active_cell_selector
             color: white
-            &::after
-                position: absolute
-                display: inline-block
+        .cell_checkbox
+            cursor: pointer
+            display: inline-block
+            text-align: center
+            width: 2.5rem
+            color: #46494e
+            &:hover
+                transform: scale(1.25)
+            &.active
                 color: #3fc97d
-                content:'\00a0✓'
-            
+        .activity_cell_checkbox
+            cursor: pointer
+            width: 2.5rem
+            color: #46494e
+            &:hover
+                transform: scale(1.25)
+            &.active
+                color: #3fc97d
+
+.subtext
+    font-size: 0.9rem
+    color: lighten(#46494e, 20%)
+
+.player_header
+    max-width: 100%
+
+.role_header
+    max-width: 0
+
+.active_header
+     width: 10rem
+
+.align_center
+    text-align: center
+
+.small_button
+    border-radius: 0.1rem
+    border: none
+    cursor: pointer
+    display: inline-block
+    padding: 0 0.3rem
+    &:hover
+        background: $navbar-button-bg
+        color: lighten(#46494e, 25%)
+    &:active
+        background: lighten($navbar-button-bg, 5%)
+        color: lighten(#46494e, 50%)
 
 .button
     border-radius: 0.2rem
