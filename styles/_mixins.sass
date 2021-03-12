@@ -1,0 +1,9 @@
+@mixin desktop()
+    @media (max-width: 600px)
+        @content
+
+@mixin remove-number-slider
+    appearance: textfield
+    -moz-appearance: textfield
+    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button
+        -webkit-appearance: none
